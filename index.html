@@ -157,19 +157,25 @@
 					});
 				});
 			</script>
-			<!-- Feedback -->
-			<script>
-				$(document).ready(function() {
-					$("#owl-demo3").owlCarousel({
-						items : 1,
-						lazyLoad : false,
-						autoPlay : true,
-						navigation : false,
-						navigationText :  true,
-						pagination :true,
-					});
-				});
-			</script>
-			</div>									</body>
+
+	</div>	
+<a href="#home" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+	<!--start-smooth-scrolling-->
+						<script type="text/javascript">
+									$(document).ready(function() {
+										/*
+										var defaults = {
+								  			containerID: 'toTop', // fading element id
+											containerHoverID: 'toTopHover', // fading element hover id
+											scrollSpeed: 1200,
+											easingType: 'linear' 
+								 		};
+										*/
+										
+										$().UItoTop({ easingType: 'easeOutQuart' });
+										
+									});
+								</script>
+	</body>
 </html>
 		
