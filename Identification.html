@@ -77,6 +77,7 @@
                                 A set of variables $X_{A}$ satisfies the backdoor criteria with respect to $(X_{i},X_{j})$ if<br/>
                                              $$\cdot (X_{i}(a)\bot_{d}X_{j}(a)|X_{A}(a))_{G(a)} $$
                                              $$\cdot  X_{A}(a)\bot_d a $$                                            </p>
+                            
                             <p>Let's use backdoor critreia to identify $E[X_{j}(a)]$:<br/>
                                 We observed the SWIG then we can find that paths from $A$ to $Y$ in the SWIG can be blocked by X.<br/>
                                 Therefore, we use the first criterion to invoke <b>d-separation</b> and <b>consistency</b> so that <br/>
@@ -87,6 +88,9 @@
                                 $$E[X_{j}(a)]=E[E[X_{j}(a)|X_{A}(a)]]=E[E[X_{j}|X_{i}=a,X_{A}]].$$
                                 This is <b>backdoor adjustment</b> we learned.<br/>
                                </p>
+                            
+                            <img class="img-fluid w-100" src="images/SWIG1.jpg">
+                            
                             <p>Repeat the above process again, we use the backdoor adjustment for $Y(a)$.<br/>
                                 To identify $E[Y(a)]$, we note that paths from $A$ to $Y$ can be blocked by $P$.<br/>
                                 $\cdot$ <b>D-separation</b> and <b>consistency</b>:<br/>
@@ -111,7 +115,23 @@
                             <h2 class="title position-relative pb-2 mb-4">Conclusions:</h2>
                         </div>
                         <div class="col-12">
-                            <p>In this research project, the object of my study is the fertility rate and the change of house price. The average rate of change of selling price is the birth rate data as the reference, which can be observed and collected.</p>
+                            <p>In this part, we use one of the identification strategies:<b>backdoor adjustment</b> to identify the expection of potential outcomes $Y(a), a\in A$.</p>
+                            <p>We may also use the extended g-formula to show the idntification of $E[Y(a)]$.</p>
+                            <p> </p>
+                            
+                        </div>
+                    </div>
+                </div>
+                <!--End -->
+                <!-- 4Start -->
+                <div class="container bg-white py-5">
+                    <div class="row px-3">
+                        <div class="col-12">
+                            <h2 class="title position-relative pb-2 mb-4">Review the definition:</h2>
+                        </div>
+                        <div class="col-12">
+                            <p>In this research project, the object of my study is the fertility rate and the change of house price. <br/>
+                                The average rate of change of selling price is the birth rate data as the reference, which can be observed and collected.</p>
                             <p>Definition: <br/>
                                 Binary variable fertility change $Y\in\left\{-1,1\right\}$,1 means fertility increase, -1 means fertility decrease.<br/>
                                 Binary variable housing price change $A\in\left\{-1,1\right\}$,1 means housing price increase, -1 means housing price decrease. <br/>
@@ -129,7 +149,7 @@
                 <div class="container bg-white py-5">
                     <div class="row px-3">
                         <div class="col-12">
-                            <h2 class="title position-relative pb-2 mb-4">Hypotheses about the relationship between variables</h2>
+                            <h2 class="title position-relative pb-2 mb-4">Review of DAG:</h2>
                         </div>
                         <div class="col-12">
                             <p>I describe the relations between variabls by DAG.</p>
