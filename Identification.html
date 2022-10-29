@@ -51,12 +51,17 @@
                         <div class="col-12">
                             <p>What assumptions are you making for identification, and why?</p>
                             <p>We assume consistency, positivity, exchangeability, and stable-unit treatment value assumption.</p>
-                            <p>1.<b>Consistency:</b><br/>Potential outcomes $Y(a)=Y$, where we to assign $a$ to $A$. That is, the observed values equal the corresponding potential outcomes.    </p>
-                            <p>2.<b>Positivity:</b><br/> We can assume positivity because the probability of each event in real life have to be positive. </p>
-                            <p>3.<b>Exchangeability:</b><br/> Potential outcomes $Y\left( a\right)$ are independent from the treatment assignment $A$ for each $a\in A$ i.e. $Y\left( a\right) \bot a,a\in A$
+                            <p>1.<b>Consistency:</b><br/>
+                                Potential outcomes $Y(a)=Y$, where we to assign $a$ to $A$. That is, the observed values equal the corresponding potential outcomes.    </p>
+                            <p>2.<b>Positivity:</b><br/>
+                                $P(Y)>0$, $Y$ is potential outcome.
+                                We can assume positivity because the probability of each event in real life have to be positive. </p>
+                            <p>3.<b>Exchangeability:</b><br/> 
+                                Potential outcomes $Y\left( a\right)$ are independent from the treatment assignment $A$ for each $a\in A$ i.e. $Y\left( a\right) \bot a,a\in A$
                              
-                                                                                            </p>
-                            <p>4.<b>SUTVA:</b><br/>The mapping $a\rightarrow Y\left( a\right)$ is a well-defined function from $A$ to the set of random variables.                              </p>
+                                        </p>
+                            <p>4.<b>SUTVA:</b><br/>
+                                The mapping $a\rightarrow Y\left( a\right)$ is a well-defined function from $A$ to the set of random variables.                              </p>
                             
                             
                             <p></p>
@@ -92,13 +97,13 @@
                             <img class="img-fluid w-100" src="images/SWIG1.jpg">
                             
                             <p>Repeat the above process again, we use the backdoor adjustment for $Y(a)$.<br/>
-                                To identify $E[Y(a)]$, we note that paths from $A$ to $Y$ can be blocked by $P$.<br/>
+                                To identify $E[Y(a)]$, we note that paths from $A$ to $Y$ can be blocked by $P$ or by $I$.<br/>
                                 $\cdot$ <b>D-separation</b> and <b>consistency</b>:<br/>
-                                $$E[Y(a)|P(a)]=E[Y(a)|A=a,P(a)]=E[Y|A=a,P(a)]$$
+                                $$E[Y(a)|P(a),I(a)]=E[Y(a)|A=a,P(a),I(a)]=E[Y|A=a,P(a),I(a)]$$
                                 $\cdot$ <b>Causal irrelevance</b>:<br/>
-                                $$P(a)=P$$
+                                $$P(a)=P, I(a)=I$$
                                 $\cdot$ <b>law of iterated expectation</b>:<br/>
-                                $$E[Y(a)]=E[E[Y(a)|P(a)]]=E[E[Y|A=a,P]]$$
+                                $$E[Y(a)]=E[E[Y(a)|P(a),I(a)]]=E[E[Y|A=a,P,I]]$$
                                 End of prove.
                                 
                             </p>
@@ -115,9 +120,10 @@
                             <h2 class="title position-relative pb-2 mb-4">Conclusions:</h2>
                         </div>
                         <div class="col-12">
-                            <p>In this part, we use one of the identification strategies:<b>backdoor adjustment</b> to identify the expection of potential outcomes $Y(a), a\in A$.</p>
-                            <p>We may also use the extended g-formula to show the idntification of $E[Y(a)]$.</p>
-                            <p> </p>
+                            <p>In this part, we use one of the identification strategies: <b>backdoor adjustment</b> to identify the expection of potential outcomes $Y(a), a\in A$.</p>
+                            <p>We may also use the <b>extended g-formula</b> to show the idntification of $E[Y(a)]$.</p>
+                            <p>In order to obtain the expectation of the birth rate on the change of house price, we should observe the corresponding household income and government policy support. <br/>
+                               This is useful for predicting changes in birth rates in the real world.</p>
                             
                         </div>
                     </div>
