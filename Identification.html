@@ -72,13 +72,32 @@
                         </div>
                         <div class="col-12">
                             <p>Our goal is to identify $E[Y(a)]$.</p>
-                            <p>We review the defnition of <b>Backdoor criteria</b>: 
+                            <p>We review the defnition of <b>Backdoor criteria</b>: <br/>
                                 Consider a causal graph $G$ with a topological oredr and potential outcomes $X_{k}(a)$ were we to assign $a$ to $X_{i}$. 
-                                A set of variables $X_{A}$ satisfies the backdoor criteria with respect to $(X_{i},X_{j})$ if
-                                             $\cdot (X_{i}(a)\bot_{d}X_{j}(a)|X_{A}(a))_{G(a)} $
-                                             $\cdot  X_{A}(a)\bot_d A $                                            </p>
-                            <p></p>
-                            <p></p>
+                                A set of variables $X_{A}$ satisfies the backdoor criteria with respect to $(X_{i},X_{j})$ if<br/>
+                                             $\cdot (X_{i}(a)\bot_{d}X_{j}(a)|X_{A}(a))_{G(a)} $<br/>
+                                             $\cdot  X_{A}(a)\bot_d a $                                            </p>
+                            <p>Let's use backdoor critreia to identify $E[X_{j}(a)]$:<br/>
+                                We observed the SWIG then we can find that paths from $A$ to $Y$ in the SWIG can be blocked by X.<br/>
+                                Therefore, we use the first criterion to invoke <b>d-separation</b> and <b>consistency</b> so that <br/>
+                                $E[X_{j}(a)|X_{A}(a)]=E[X_{j}(a)|X_{i}=a,X_{A}(a)]=E[X_{j}|X_{i}=a,X_{A}(a)]$. <br/>
+                                We then use the second criterion to invoke <b>causal irrelevance</b>:<br/>
+                                $X_{A}(a)=X_{A}$.<br/>
+                                Finally, we use <b>law of iterated expectation</b> to finish our argument:<br/>
+                                $E[X_{j}(a)]=E[E[X_{j}(a)|X_{A}(a)]]=E[E[X_{j}|X_{i}=a,X_{A}]]$<br/>
+                                This is <b>backdoor adjustment</b> we learned.<br/>
+                               </p>
+                            <p>Repeat the above process again, we use the backdoor adjustment for $Y(a)$.<br/>
+                                To identify $E[Y(a)]$, we note that paths from $A$ to $Y$ can be blocked by P.<br/>
+                                $\cdot$ <b>D-separation</b> and <b>consistency</b>:<br/>
+                                $$E[Y(a)|P(a)]=E[Y(a)|A=a,P(a)]=E[Y|A=a,P(a)]$$.
+                                $\cdot$ <b>Causal irrelevance</b>:<br/>
+                                $$P(a)=P$$.
+                                $\cdot$ <b>law of iterated expectation</b>:<br/>
+                                $$E[Y(a)]=E[E[Y(a)|P(a)]]=E[E[Y|A=a,P]]$$.<br/>
+                                End of prove.
+                                
+                            </p>
                             <p></p>
                             
                         </div>
