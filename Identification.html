@@ -71,8 +71,12 @@
                             <h2 class="title position-relative pb-2 mb-4">Proof and Justification:</h2>
                         </div>
                         <div class="col-12">
-                            <p>Our goal is to identify $E[Y(a)]$</p>
-                            <p></p>
+                            <p>Our goal is to identify $E[Y(a)]$.</p>
+                            <p>We review the defnition of <b>Backdoor criteria</b>: 
+                                Consider a causal graph $G$ with a topological oredr and potential outcomes $X_{k}(a)$ were we to assign $a$ to $X_{i}$. 
+                                A set of variables $X_{A}$ satisfies the backdoor criteria with respect to $(X_{i},X_{j})$ if
+                                             $\cdot (X_{i}(a)\bot_{d}X_{j}(a)|X_{A}(a))_{G(a)} $
+                                             $\cdot  X_{A}(a)\bot_d A $                                            </p>
                             <p></p>
                             <p></p>
                             <p></p>
