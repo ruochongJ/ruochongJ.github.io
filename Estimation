@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Identification page</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="Free Website Template" name="keywords">
+        <meta content="Free Website Template" name="description">
+
+        <!-- Favicon -->
+        <link href="img/favicon.ico" rel="icon">
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@400;700&family=Poppins&display=swap" rel="stylesheet"> 
+
+        <!-- Font Awesome -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="lib1/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="lib1/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/style1.css" rel="stylesheet">
+        
+        <!--   math-->
+        <script type="text/javascript" async
+          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>        
+        <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+        });
+        </script>
+        
+        
+    </head>
+
+    <body data-spy="scroll" data-target=".navbar" data-offset="51">
+        <script type="text/javascript" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+        <div class="wrapper">
+ 
+            <div class="content">
+                <!-- 1Start -->
+                <div class="container bg-white py-5">
+                    <div class="row px-3">
+                        <div class="col-12">
+                            <h2 class="title position-relative pb-2 mb-4">Assumptions for identification:</h2>
+                        </div>
+                        <div class="col-12">
+                            <p>What assumptions are you making for identification, and why?</p>
+                            <p>We assume consistency, positivity, exchangeability, and stable-unit treatment value assumption.</p>
+                            <p>1.<b>Consistency:</b><br/>
+                                Potential outcomes $Y(a)=Y$, where we to assign $a$ to $A$. That is, the observed values equal the corresponding potential outcomes.    </p>
+                            <p>2.<b>Positivity:</b><br/>
+                                $P(Y)>0$, $Y$ is the potential outcome.
+                                We can assume positivity because the probability of each event in real life have to be positive. </p>
+                            <p>3.<b>Exchangeability:</b><br/> 
+                                Potential outcomes $Y\left( a\right)$ are independent from the treatment assignment $A$ for each $a\in A$ i.e. $Y\left( a\right) \bot a,a\in A$.<br/>
+                                Because the actual birth of a family does not provide any information about what will happen to the family under various house price changes.
+                                        </p>
+                            <p>4.<b>SUTVA:</b><br/>
+                                The mapping $a\rightarrow Y\left( a\right)$ is a well-defined function from $A$ to the set of random variables.                              </p>
+                            
+                            
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                <!--End -->
+                <!-- 2Start -->
+                <div class="container bg-white py-5">
+                    <div class="row px-3">
+                        <div class="col-12">
+                            <h2 class="title position-relative pb-2 mb-4">Proof and Justification:</h2>
+                        </div>
+                        <div class="col-12">
+                            <p>Our goal is to identify $E[Y(a)]$.</p>
+                            <p>We review the defnition of <b>Backdoor criteria</b>: <br/>
+                                Consider a causal graph $G$ with a topological oredr and potential outcomes $X_{k}(a)$ were we to assign $a$ to $X_{i}$. 
+                                A set of variables $X_{A}$ satisfies the backdoor criteria with respect to $(X_{i},X_{j})$ if<br/>
+                                             $$\cdot (X_{i}(a)\bot_{d}X_{j}(a)|X_{A}(a))_{G(a)} $$
+                                             $$\cdot  X_{A}(a)\bot_d a $$                                            </p>
+                            
+                            <p>Let's use backdoor critreia to identify $E[X_{j}(a)]$:<br/>
+                                We observed the SWIG then we can find that paths from $A$ to $Y$ in the SWIG can be blocked by X.<br/>
+                                Therefore, we use the first criterion to invoke <b>d-separation</b> and <b>consistency</b> so that <br/>
+                                $$E[X_{j}(a)|X_{A}(a)]=E[X_{j}(a)|X_{i}=a,X_{A}(a)]=E[X_{j}|X_{i}=a,X_{A}(a)].$$
+                                We then use the second criterion to invoke <b>causal irrelevance</b>:<br/>
+                                $$X_{A}(a)=X_{A}.$$
+                                Finally, we use <b>law of iterated expectation</b> to finish our argument:<br/>
+                                $$E[X_{j}(a)]=E[E[X_{j}(a)|X_{A}(a)]]=E[E[X_{j}|X_{i}=a,X_{A}]].$$
+                                This is <b>backdoor adjustment</b> we learned.<br/>
+                               </p>
+                            
+                            <img class="img-fluid w-100" src="images/SWIG1.jpg">
+                            
+                            <p>Repeat the above process again, we use the backdoor adjustment for $Y(a)$.<br/>
+                                To identify $E[Y(a)]$, we note that paths from $A$ to $Y$ can be blocked by $P$ or by $I$.<br/>
+                                $\cdot$ <b>D-separation</b> and <b>consistency</b>:<br/>
+                                $$E[Y(a)|P(a),I(a)]=E[Y(a)|A=a,P(a),I(a)]=E[Y|A=a,P(a),I(a)]$$
+                                $\cdot$ <b>Causal irrelevance</b>:<br/>
+                                $$P(a)=P, I(a)=I$$
+                                $\cdot$ <b>law of iterated expectation</b>:<br/>
+                                $$E[Y(a)]=E[E[Y(a)|P(a),I(a)]]=E[E[Y|A=a,P,I]]$$
+                                End of prove.
+                                
+                            </p>
+                            <p></p>
+                            
+                        </div>
+                    </div>
+                </div>
+                <!--End -->
+                <!-- 3Start -->
+                <div class="container bg-white py-5">
+                    <div class="row px-3">
+                        <div class="col-12">
+                            <h2 class="title position-relative pb-2 mb-4">Conclusions:</h2>
+                        </div>
+                        <div class="col-12">
+                            <p>In this part, we use one of the identification strategies: <b>backdoor adjustment</b> to identify the expection of potential outcomes $Y(a), a\in A$.</p>
+                            <p>We may also use the <b>extended g-formula</b> to show the idntification of $E[Y(a)]$.</p>
+                            <p>In order to obtain the expectation of the birth rate on the change of house price, we should observe the corresponding household income and government policy support. <br/>
+                               This is useful for predicting changes in birth rates in the real world.</p>
+                            
+                        </div>
+                    </div>
+                </div>
+                <!--End -->
+                <!-- 4Start -->
+                <div class="container bg-white py-5">
+                    <div class="row px-3">
+                        <div class="col-12">
+                            <h2 class="title position-relative pb-2 mb-4">Review the definition:</h2>
+                        </div>
+                        <div class="col-12">
+                            <p>In this research project, the object of my study is the fertility rate and the change of house price. <br/>
+                                The average rate of change of selling price is the birth rate data as the reference, which can be observed and collected.</p>
+                            <p>Definition: <br/>
+                                Binary variable fertility change $Y\in\left\{-1,1\right\}$,1 means fertility increase, -1 means fertility decrease.<br/>
+                                Binary variable housing price change $A\in\left\{-1,1\right\}$,1 means housing price increase, -1 means housing price decrease. <br/>
+                                Policy support $P\in\left\{0,1\right\}$, 0 means no policy support, 1 means policy support. <br/>
+                                Family characteristics $X\in R^{d}$. <br/> 
+                                Family income $I\in\left\{0,1\right\}$ represents high and low income respectively.<br/> 
+                                Supply-demand relation $U$. </p>
+                            
+                        </div>
+                    </div>
+                </div>
+                <!--End -->
+                
+                <!-- Start -->
+                <div class="container bg-white py-5">
+                    <div class="row px-3">
+                        <div class="col-12">
+                            <h2 class="title position-relative pb-2 mb-4">Review DAG:</h2>
+                        </div>
+                        <div class="col-12">
+                            <p>I describe the relations between variabls by DAG.</p>
+                            <img class="img-fluid w-100" src="images/DAG3.jpg">
+                            <a href="https://ruochongj.github.io/Research.html">Go to Research Page</a>
+                            <p align="right">
+                            <a href="https://ruochongj.github.io/index.html">Return to Home Page</a>
+                                </p>
+                        </div>
+                    </div>
+                </div>
+                <!--End -->
+                
+            </div>
+        </div>
+        
+        <!-- Back to Top -->
+        <a href="#" class="back-to-top"><i class="fa fa-angle-double-up"></i></a>
+        
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="lib1/typed/typed.min.js"></script>
+        <script src="lib1/easing/easing.min.js"></script>
+        <script src="lib1/waypoints/waypoints.min.js"></script>
+        <script src="lib1/owlcarousel/owl.carousel.min.js"></script>
+        <script src="lib1/isotope/isotope.pkgd.min.js"></script>
+        <script src="lib1/lightbox/js/lightbox.min.js"></script>
+
+        <!-- Contact Javascript File -->
+        <script src="mail/jqBootstrapValidation.min.js"></script>
+        <script src="mail/contact.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="js1/main.js"></script>
+    </body>
+</html>
