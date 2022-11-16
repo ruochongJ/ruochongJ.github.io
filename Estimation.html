@@ -89,20 +89,22 @@
                             </p>
                             <p> 
                             In linear regression, we choose the form for $\mu (X,A;\theta)$ including interaction term:
-                                $$\mu (X,A;\theta ):=\theta' \begin{bmatrix} X \\ XA \end{bmatrix}$$.
+                                $$\mu (X,A;\theta ):=\theta' \begin{bmatrix} X \\ XA \end{bmatrix}.$$
                             </p> 
                             <p> To estimatwe $\theta$, we try to minimize mean square error by the least squares approach:
-                                $$\widehat{\theta}:=min_{\theta} E_{N}[(Y-\mu(X,A;\theta))^{2}]$$.
+                                $$\widehat{\theta}:=min_{\theta} E_{N}[(Y-\mu(X,A;\theta))^{2}].$$
                                 By taking a derivative of mean square error, we search for $\widehat{\theta}$ that satisfies
-                                $$0 = E_{N}[(Y-\mu (X,A;\theta))\dfrac{\partial \mu \left( x,A;\theta \right) }{\partial \theta }]$$.
+                                $$0 = E_{N}[(Y-\mu (X,A;\theta))\dfrac{\partial \mu \left( x,A;\theta \right) }{\partial \theta }].$$
                                 Since $\mu (X,A;\theta):= \theta' \begin{bmatrix} X \\ XA \end{bmatrix}$, 
-                                then $\dfrac{\partial \mu \left( x,A;\theta \right) }{\partial \theta } = \begin{bmatrix} X \\ XA \end{bmatrix}$.
+                                then $\dfrac{\partial \mu \left( x,A;\theta \right) }{\partial \theta } = \begin{bmatrix} X \\ XA \end{bmatrix}.$<br/>
                                 Hence, $\widehat{\theta}$ should solve 
-                                $0 = E_{N}[Y\begin{bmatrix} X \\ XA \end{bmatrix}]-E_{N}[\begin{bmatrix} X \\ XA \end{bmatrix}\begin{bmatrix} X \\ XA \end{bmatrix}']\theta$.
+                                $0 = E_{N}[Y\begin{bmatrix} X \\ XA \end{bmatrix}]-E_{N}[\begin{bmatrix} X \\ XA \end{bmatrix}\begin{bmatrix} X \\ XA \end{bmatrix}']\theta$.<br/>
                                 Assuming $E_{N}[\begin{bmatrix} X \\ XA \end{bmatrix}\begin{bmatrix} X \\ XA \end{bmatrix}']$ is invertible, 
                                 then $\widehat{\theta}:=E_{N}[\begin{bmatrix} X \\ XA \end{bmatrix}\begin{bmatrix} X \\ XA \end{bmatrix}']^{-1}E_{N}[Y\begin{bmatrix} X \\ XA \end{bmatrix}]$
-                            
                             </p>
+                            <p> 
+                            </p>
+                            
                             <p>Our goal is to identify $E[Y(a)]$.</p>
                             <p>We review the defnition of <b>Backdoor criteria</b>: <br/>
                                 Consider a causal graph $G$ with a topological oredr and potential outcomes $X_{k}(a)$ were we to assign $a$ to $X_{i}$. 
