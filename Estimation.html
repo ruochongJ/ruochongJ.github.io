@@ -80,11 +80,12 @@
                         <div class="col-12">
                             <p>
                             By identification, we have get the equation:  
-                                $$E[Y(a)]=E[E[Y(a)|P(a),I(a)]]=E[E[Y|A=a,P,I]]$$.
+                                $$E[Y(a)]=E[E[Y(a)|P(a),I(a)]]=E[E[Y|A=a,P,I]].$$
                             </p>
                              <p> 
                             Outcome regression involves proposing a function $\mu\left( X,A;\beta\right)$, specified by unknown prameters $\theta$,
-                            so that $E[Y|X,A]:=\mu(X,A;\theta)$, where $X\in \mathbb{R} ^{n}$ is a conbination of  binary variables. 
+                            so that $$E[Y|X,A]:=\mu(X,A;\theta),$$ 
+                            where $X\in \mathbb{R} ^{n}$ is a conbination of  binary variables. 
                             More specifically, $X$ here is $(1,P,I)$.
                             </p>
                             <p> 
@@ -98,7 +99,7 @@
                                 $$0 = E_{N}[(Y-\mu (X,A;\theta))\dfrac{\partial \mu \left( x,A;\theta \right) }{\partial \theta }].$$
                                 
                                 Since $\mu (X,A;\theta):= \theta' \begin{bmatrix} X \\ XA \end{bmatrix}$, 
-                                then $\dfrac{\partial \mu \left( x,A;\theta \right) }{\partial \theta } = \begin{bmatrix} X \\ XA \end{bmatrix}.$<br/>
+                                then $$\dfrac{\partial \mu \left( x,A;\theta \right) }{\partial \theta } = \begin{bmatrix} X \\ XA \end{bmatrix}.$$<br/>
                                 
                                 Hence, $\widehat{\theta}$ should solve 
                                 $$0 = E_{N}[Y\begin{bmatrix} X \\ XA \end{bmatrix}]-E_{N}[\begin{bmatrix} X \\ XA \end{bmatrix}\begin{bmatrix} X \\ XA \end{bmatrix}']\theta.$$<br/>
@@ -107,40 +108,9 @@
                             </p>
                             <p> Based on outcome regression, we estimatre the ATE with 
                                 $$E[Y(1)-Y(0)]\approx E_{N}[\widehat{\theta}\begin{bmatrix} X \\ X \end{bmatrix}-\widehat{\theta}\begin{bmatrix} X \\ 0 \end{bmatrix}]$$
-                                $$=E_{N}[\widehat{\theta}\begin{bmatrix} 0 \\ X \end{bmatrix} = \widehat{\alpha}'E_{N}[X]$$
+                                $$=E_{N}[\widehat{\theta}\begin{bmatrix} 0 \\ X \end{bmatrix}] = \widehat{\alpha}'E_{N}[X]$$
                                 where we have decomposed $\widehat{\theta}$ as $\widehat{\theta}:=[\widehat{\beta}',\widehat{\alpha}']'.$
                             </p>
-                            
-                            <p>Our goal is to identify $E[Y(a)]$.</p>
-                            <p>We review the defnition of <b>Backdoor criteria</b>: <br/>
-                                Consider a causal graph $G$ with a topological oredr and potential outcomes $X_{k}(a)$ were we to assign $a$ to $X_{i}$. 
-                                A set of variables $X_{A}$ satisfies the backdoor criteria with respect to $(X_{i},X_{j})$ if<br/>
-                                             $$\cdot (X_{i}(a)\bot_{d}X_{j}(a)|X_{A}(a))_{G(a)} $$
-                                             $$\cdot  X_{A}(a)\bot_d a $$                                            </p>
-                            
-                            <p>Let's use backdoor critreia to identify $E[X_{j}(a)]$:<br/>
-                                We observed the SWIG then we can find that paths from $A$ to $Y$ in the SWIG can be blocked by X.<br/>
-                                Therefore, we use the first criterion to invoke <b>d-separation</b> and <b>consistency</b> so that <br/>
-                                $$E[X_{j}(a)|X_{A}(a)]=E[X_{j}(a)|X_{i}=a,X_{A}(a)]=E[X_{j}|X_{i}=a,X_{A}(a)].$$
-                                We then use the second criterion to invoke <b>causal irrelevance</b>:<br/>
-                                $$X_{A}(a)=X_{A}.$$
-                                Finally, we use <b>law of iterated expectation</b> to finish our argument:<br/>
-                                $$E[X_{j}(a)]=E[E[X_{j}(a)|X_{A}(a)]]=E[E[X_{j}|X_{i}=a,X_{A}]].$$
-                                This is <b>backdoor adjustment</b> we learned.<br/>
-                               </p>
-                            
-                            <img class="img-fluid w-100" src="images/SWIG1.jpg">
-                            
-                            <p>Repeat the above process again, we use the backdoor adjustment for $Y(a)$.<br/>
-                                To identify $E[Y(a)]$, we note that paths from $A$ to $Y$ can be blocked by $P$ or by $I$.<br/>
-                                $\cdot$ <b>D-separation</b> and <b>consistency</b>:<br/>
-                                $$E[Y(a)|P(a),I(a)]=E[Y(a)|A=a,P(a),I(a)]=E[Y|A=a,P(a),I(a)]$$
-                                $\cdot$ <b>Causal irrelevance</b>:<br/>
-                                $$P(a)=P, I(a)=I$$
-                                $\cdot$ <b>law of iterated expectation</b>:<br/>
-                                $$E[Y(a)]=E[E[Y(a)|P(a),I(a)]]=E[E[Y|A=a,P,I]]$$
-                                End of prove.
-                                
                             </p>
                             <p></p>
                             
