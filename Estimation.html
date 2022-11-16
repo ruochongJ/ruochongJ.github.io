@@ -46,11 +46,11 @@
                 <div class="container bg-white py-5">
                     <div class="row px-3">
                         <div class="col-12">
-                            <h2 class="title position-relative pb-2 mb-4">Algorithms for estimation/implementation</h2>
+                            <h2 class="title position-relative pb-2 mb-4">Algorithms for estimation</h2>
                         </div>
                         <div class="col-12">
                             <p>What algorithms are you using for estimation/implementation? </p>
-                            <p>I am going to use outcome regression for estimation and build a regressionn for estimation. </p>
+                            <p>I am going to use <b>outcome linear regression<b> for estimation and build a linear regression model for estimation. </p>
                             <p>We have made some assumption for identification as following.</p>
                             <p>We assume consistency, positivity, exchangeability, and stable-unit treatment value assumption.</p>
                             <p>1.<b>Consistency:</b><br/>
@@ -78,6 +78,21 @@
                             <h2 class="title position-relative pb-2 mb-4">Steps for estimation</h2>
                         </div>
                         <div class="col-12">
+                            <p>
+                            By identification, we have get the equation:  
+                            $$E[Y(a)]=E[E[Y(a)|P(a),I(a)]]=E[E[Y|A=a,P,I]]$$.
+                            </p>
+                             <p> 
+                            Outcome regression involves proposing a function $\mu\left( X,A;\beta\right)$, specified by unknown prameters $\theta$,
+                            so that $E[Y|X,A]:=\mu(X,A;\theta)$, where $X\in \mathbb{R} ^{n}$ is a conbination of  binary variables. 
+                            More specifically, $X$ here is $(P,I)$.
+                            </p>
+                            <p> 
+                            In linear reh=gression, I choose the form for $\mu (X,A;\theta)$ including interaction term:
+                            $$\mu (X,A'\thata ):=\theta' \begin{bmatrix} X \\ XA \end{bmatrix}$$
+                                
+                            </p> 
+                            
                             <p>Our goal is to identify $E[Y(a)]$.</p>
                             <p>We review the defnition of <b>Backdoor criteria</b>: <br/>
                                 Consider a causal graph $G$ with a topological oredr and potential outcomes $X_{k}(a)$ were we to assign $a$ to $X_{i}$. 
