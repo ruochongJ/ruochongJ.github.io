@@ -93,16 +93,22 @@
                             </p> 
                             <p> To estimatwe $\theta$, we try to minimize mean square error by the least squares approach:
                                 $$\widehat{\theta}:=min_{\theta} E_{N}[(Y-\mu(X,A;\theta))^{2}].$$
+                                
                                 By taking a derivative of mean square error, we search for $\widehat{\theta}$ that satisfies
                                 $$0 = E_{N}[(Y-\mu (X,A;\theta))\dfrac{\partial \mu \left( x,A;\theta \right) }{\partial \theta }].$$
+                                
                                 Since $\mu (X,A;\theta):= \theta' \begin{bmatrix} X \\ XA \end{bmatrix}$, 
                                 then $\dfrac{\partial \mu \left( x,A;\theta \right) }{\partial \theta } = \begin{bmatrix} X \\ XA \end{bmatrix}.$<br/>
+                                
                                 Hence, $\widehat{\theta}$ should solve 
-                                $0 = E_{N}[Y\begin{bmatrix} X \\ XA \end{bmatrix}]-E_{N}[\begin{bmatrix} X \\ XA \end{bmatrix}\begin{bmatrix} X \\ XA \end{bmatrix}']\theta$.<br/>
+                                $$0 = E_{N}[Y\begin{bmatrix} X \\ XA \end{bmatrix}]-E_{N}[\begin{bmatrix} X \\ XA \end{bmatrix}\begin{bmatrix} X \\ XA \end{bmatrix}']\theta.$$<br/>
                                 Assuming $E_{N}[\begin{bmatrix} X \\ XA \end{bmatrix}\begin{bmatrix} X \\ XA \end{bmatrix}']$ is invertible, 
-                                then $\widehat{\theta}:=E_{N}[\begin{bmatrix} X \\ XA \end{bmatrix}\begin{bmatrix} X \\ XA \end{bmatrix}']^{-1}E_{N}[Y\begin{bmatrix} X \\ XA \end{bmatrix}]$
+                                then $$\widehat{\theta}:=E_{N}[\begin{bmatrix} X \\ XA \end{bmatrix}\begin{bmatrix} X \\ XA \end{bmatrix}']^{-1}E_{N}[Y\begin{bmatrix} X \\ XA \end{bmatrix}].$$
                             </p>
-                            <p> 
+                            <p> Based on outcome regression, we estimatre the ATE with 
+                                $$E[Y(1)-Y(0)]\approx E_{N}[\widehat{\theta}\begin{bmatrix} X \\ X \end{bmatrix}-\widehat{\theta}\begin{bmatrix} X \\ 0 \end{bmatrix}]$$
+                                $$=E_{N}[\widehat{\theta}\begin{bmatrix} 0 \\ X \end{bmatrix} = \widehat{\alpha}'E_{N}[X]$$
+                                where we have decomposed $\widehat{\theta}$ as $\widehat{\theta}:=[\widehat{\beta}',\widehat{\alpha}']'.$
                             </p>
                             
                             <p>Our goal is to identify $E[Y(a)]$.</p>
