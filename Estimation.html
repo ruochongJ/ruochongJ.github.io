@@ -80,7 +80,7 @@
                         <div class="col-12">
                             <p>
                             By identification, we have get the equation:  
-                            $$E[Y(a)]=E[E[Y(a)|P(a),I(a)]]=E[E[Y|A=a,P,I]]$$.
+                                $$E[Y(a)]=E[E[Y(a)|P(a),I(a)]]=E[E[Y|A=a,P,I]]$$.
                             </p>
                              <p> 
                             Outcome regression involves proposing a function $\mu\left( X,A;\beta\right)$, specified by unknown prameters $\theta$,
@@ -88,10 +88,19 @@
                             More specifically, $X$ here is $(1,P,I)$.
                             </p>
                             <p> 
-                            In linear regression, I choose the form for $\mu (X,A;\theta)$ including interaction term:
-                            $$\mu (X,A;\thata ):=\theta' \begin{bmatrix} X \\ XA \end{bmatrix}$$.
+                            In linear regression, we choose the form for $\mu (X,A;\theta)$ including interaction term:
+                                $$\mu (X,A;\theta ):=\theta' \begin{bmatrix} X \\ XA \end{bmatrix}$$.
                             </p> 
-                            <p> To estimatwe
+                            <p> To estimatwe $\theta$, we try to minimize mean square error by the least squares approach:
+                                $$\widehat{\theta}:=min_{\theta} E_{N}[(Y-\mu(X,A;\theta))^{2}]$$.
+                                By taking a derivative of mean square error, we search for $\widehat{\theta}$ that satisfies
+                                $$0 = E_{N}[(Y-\mu (X,A;\theta))\dfrac{\partial \mu \left( x,A;\theta \right) }{\partial \theta }]$$.
+                                Since $\mu (X,A;\theta):= \theta' \begin{bmatrix} X \\ XA \end{bmatrix}$, 
+                                then $\dfrac{\partial \mu \left( x,A;\theta \right) }{\partial \theta } = \begin{bmatrix} X \\ XA \end{bmatrix}$.
+                                Hence, $\widehat{\theta}$ should solve 
+                                $0 = E_{N}[Y\begin{bmatrix} X \\ XA \end{bmatrix}]-E_{N}[\begin{bmatrix} X \\ XA \end{bmatrix}\begin{bmatrix} X \\ XA \end{bmatrix}']\theta$.
+                                Assuming $E_{N}[\begin{bmatrix} X \\ XA \end{bmatrix}\begin{bmatrix} X \\ XA \end{bmatrix}']$ is invertible, 
+                                then $\widehat{\theta}:=E_{N}[\begin{bmatrix} X \\ XA \end{bmatrix}\begin{bmatrix} X \\ XA \end{bmatrix}']^{-1}E_{N}[Y\begin{bmatrix} X \\ XA \end{bmatrix}]$
                             
                             </p>
                             <p>Our goal is to identify $E[Y(a)]$.</p>
