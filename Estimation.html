@@ -51,7 +51,7 @@
                         <div class="col-12">
                             <p>What algorithms are you using for estimation/implementation? </p>
                             <p>I am going to use <b>outcome linear regression</b> for estimation and build a linear regression model for estimation. </p>
-                            <p>We have made some assumption for identification as following.</p>
+                            <p>We have made some assumptions for identification as following.</p>
                             <p>We assume consistency, positivity, exchangeability, and stable-unit treatment value assumption.</p>
                             <p>1.<b>Consistency:</b><br/>
                                 Potential outcomes $Y(a)=Y$, where we to assign $a$ to $A$. That is, the observed values equal the corresponding potential outcomes.    </p>
@@ -86,7 +86,8 @@
                             Outcome regression involves proposing a function $\mu\left( X,A;\beta\right)$, specified by unknown prameters $\theta$,
                             so that $$E[Y|X,A]:=\mu(X,A;\theta),$$ 
                             where $X\in \mathbb{R} ^{n}$ is a conbination of  binary variables. 
-                            More specifically, $X$ here is $(1,P,I)$.
+                            More specifically, $X$ here is $(1,P,I)$.<br/>
+                            We arrive at the approximation: $$E[Y(a)] \approx E_{N}[\mu(X,A;\theta)].$$    
                             </p>
                             <p> 
                             In linear regression, we choose the form for $\mu (X,A;\theta)$ including interaction term:
