@@ -122,14 +122,16 @@
                 <div class="container bg-white py-5">
                     <div class="row px-3">
                         <div class="col-12">
-                            <h2 class="title position-relative pb-2 mb-4">The impact of data on estimates.</h2>
+                            <h2 class="title position-relative pb-2 mb-4">The impact of data on estimation</h2>
                         </div>
                         <div class="col-12">
-                            <p>In this part, we use one of the identification strategies: <b>backdoor adjustment</b> to identify the expection of potential outcomes $Y(a), a\in A$.</p>
-                            <p>We may also use the <b>extended g-formula</b> to show the idntification of $E[Y(a)]$.</p>
-                            <p>In order to obtain the expectation of the birth rate on the change of house price, we should observe the corresponding household income and government policy support. <br/>
-                               This is useful for predicting changes in birth rates in the real world.</p>
+                            <p>By the linear regression for estimation, we get $$\widehat{\theta}:=E_{N}[\begin{bmatrix} X \\ XA \end{bmatrix}\begin{bmatrix} X \\ XA \end{bmatrix}']^{-1}E_{N}[Y\begin{bmatrix} X \\ XA \end{bmatrix}].$$
+                            and $$E[Y(1)-Y(0)]\approx \widehat{\alpha}'E_{N}[X]$$
+                            where we have decomposed $\widehat{\theta}$ as $\widehat{\theta}:=[\widehat{\beta}',\widehat{\alpha}']'.$<br/>
+                            The data objects we need to consider are housing price change $A$, policy support $P$ and Household income $I$.  
+                            This is a simple algorithm, we should choose the right number of samples, not too few data sets, to ensure that our results are reasonable.
                             
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -138,12 +140,16 @@
                 <div class="container bg-white py-5">
                     <div class="row px-3">
                         <div class="col-12">
-                            <h2 class="title position-relative pb-2 mb-4">Views on the results and performance of the algorithm.</h2>
+                            <h2 class="title position-relative pb-2 mb-4">Views on the results and performance of the algorithm</h2>
                         </div>
-                        <div class="col-12">
-                            <p>In this research project, the object of my study is the fertility rate and the change of house price. <br/>
-                                The average rate of change of selling price is the birth rate data as the reference, which can be observed and collected.</p>
-                            <p>Definition: <br/>  </p>
+                        <div class="col-12">  
+                            <p>The ATE $E[Y(1)-Y(0)]$ in terms of $\widehat{\theta}$ is  $$E[Y(1)-Y(0)]\approx \widehat{\alpha}'E_{N}[X].$$
+                            We use the method of outcome regression to construct a linear regression model for the data, 
+                            assuming that there is a linear relationship between the data and the outcome data.<br/>
+                            We set the function $\mu (X,A;\theta)$  is equal to $\theta' \begin{bmatrix} X \\ XA \end{bmatrix}$.
+                            Of course, we can set up other ones, such as $\mu (X,A;\theta):=\theta' \begin{bmatrix} X \\ A \end{bmatrix}$.<br/>
+                            In linear regression, we could easily see the relation between the average treatment effect and the estimated parameters.    
+                            </p>
                             
                         </div>
                     </div>
@@ -163,7 +169,7 @@
                                 Binary variable fertility change $Y\in\left\{-1,1\right\}$,1 means fertility increase, -1 means fertility decrease.<br/>
                                 Binary variable housing price change $A\in\left\{-1,1\right\}$,1 means housing price increase, -1 means housing price decrease. <br/>
                                 Policy support $P\in\left\{0,1\right\}$, 0 means no policy support, 1 means policy support. <br/>
-                                Family characteristics $X\in R^{d}$. <br/> 
+                                Family characteristics $F\in R^{d}$. <br/> 
                                 Family income $I\in\left\{0,1\right\}$ represents high and low income respectively.<br/> 
                                 Supply-demand relation $U$. </p>
                             
