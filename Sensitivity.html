@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Sensitivity analysis page</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="Free Website Template" name="keywords">
+        <meta content="Free Website Template" name="description">
+
+        <!-- Favicon -->
+        <link href="img/favicon.ico" rel="icon">
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@400;700&family=Poppins&display=swap" rel="stylesheet"> 
+
+        <!-- Font Awesome -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="lib1/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="lib1/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/style1.css" rel="stylesheet">
+        
+        <!--   math-->
+        <script type="text/javascript" async
+          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>        
+        <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+        });
+        </script>
+        
+        
+    </head>
+
+    <body data-spy="scroll" data-target=".navbar" data-offset="51">
+        <script type="text/javascript" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+        <div class="wrapper">
+ 
+            <div class="content">
+                <!-- 1Start -->
+                <div class="container bg-white py-5">
+                    <div class="row px-3">
+                        <div class="col-12">
+                            <h2 class="title position-relative pb-2 mb-4">Algorithms for estimation</h2>
+                        </div>
+                        <div class="col-12">
+                            <p>What algorithms are you using for estimation/implementation? </p>
+                            <p>I am going to use <b>outcome linear regression</b> for estimation and build a linear regression model for estimation. </p>
+                            <p>We have made some assumptions for identification as following.</p>
+                            <p>We assume consistency, positivity, exchangeability, and stable-unit treatment value assumption.</p>
+                            <p>1.<b>Consistency:</b><br/>
+                                Potential outcomes $Y(a)=Y$, where we to assign $a$ to $A$. That is, the observed values equal the corresponding potential outcomes.    </p>
+                            <p>2.<b>Positivity:</b><br/>
+                                $P(Y)>0$, $Y$ is the potential outcome.
+                                We can assume positivity because the probability of each event in real life have to be positive. </p>
+                            <p>3.<b>Exchangeability:</b><br/> 
+                                Potential outcomes $Y\left( a\right)$ are independent from the treatment assignment $A$ for each $a\in A$ i.e. $Y\left( a\right) \bot a,a\in A$.<br/>
+                                Because the actual birth of a family does not provide any information about what will happen to the family under various house price changes.
+                                        </p>
+                            <p>4.<b>SUTVA:</b><br/>
+                                The mapping $a\rightarrow Y\left( a\right)$ is a well-defined function from $A$ to the set of random variables.                              </p>
+                            
+                            
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                <!--End -->
+                <!-- 2Start -->
+                <div class="container bg-white py-5">
+                    <div class="row px-3">
+                        <div class="col-12">
+                            <h2 class="title position-relative pb-2 mb-4">Steps for estimation</h2>
+                        </div>
+                        <div class="col-12">
+                            <p>
+                            By identification, we have get the equation:  
+                                $$E[Y(a)]=E[E[Y(a)|P(a),I(a)]]=E[E[Y|A=a,P,I]].$$
+                            </p>
+                             <p> 
+                            Outcome regression involves proposing a function $\mu\left( X,A;\beta\right)$, specified by unknown prameters $\theta$,
+                            so that $$E[Y|X,A]:=\mu(X,A;\theta),$$ 
+                            where $X\in \mathbb{R} ^{n}$ is a conbination of  binary variables. 
+                            More specifically, $X$ here is $(1,P,I)$.<br/>
+                            We arrive at the approximation: $$E[Y(a)] \approx E_{N}[\mu(X,A;\theta)].$$    
+                            </p>
+                            <p> 
+                            In linear regression, we choose the form for $\mu (X,A;\theta)$ including interaction term:
+                                $$\mu (X,A;\theta ):=\theta' \begin{bmatrix} X \\ XA \end{bmatrix}.$$
+                            </p> 
+                            <p> To estimatwe $\theta$, we try to minimize mean square error by the least squares approach:
+                                $$\widehat{\theta}:=min_{\theta} E_{N}[(Y-\mu(X,A;\theta))^{2}].$$
+                                
+                                By taking a derivative of mean square error, we search for $\widehat{\theta}$ that satisfies
+                                $$0 = E_{N}[(Y-\mu (X,A;\theta))\dfrac{\partial \mu \left( x,A;\theta \right) }{\partial \theta }].$$
+                                
+                                Since $\mu (X,A;\theta):= \theta' \begin{bmatrix} X \\ XA \end{bmatrix}$, 
+                                then $$\dfrac{\partial \mu \left( x,A;\theta \right) }{\partial \theta } = \begin{bmatrix} X \\ XA \end{bmatrix}.$$<br/>
+                                
+                                Hence, $\widehat{\theta}$ should solve 
+                                $$0 = E_{N}[Y\begin{bmatrix} X \\ XA \end{bmatrix}]-E_{N}[\begin{bmatrix} X \\ XA \end{bmatrix}\begin{bmatrix} X \\ XA \end{bmatrix}']\theta.$$<br/>
+                                Assuming $E_{N}[\begin{bmatrix} X \\ XA \end{bmatrix}\begin{bmatrix} X \\ XA \end{bmatrix}']$ is invertible, 
+                                then $$\widehat{\theta}:=E_{N}[\begin{bmatrix} X \\ XA \end{bmatrix}\begin{bmatrix} X \\ XA \end{bmatrix}']^{-1}E_{N}[Y\begin{bmatrix} X \\ XA \end{bmatrix}].$$
+                            </p>
+                            <p> Based on outcome regression, we estimate the ATE with 
+                                $$E[Y(1)-Y(0)]\approx E_{N}[\widehat{\theta}\begin{bmatrix} X \\ X \end{bmatrix}-\widehat{\theta}\begin{bmatrix} X \\ 0 \end{bmatrix}]$$
+                                $$=E_{N}[\widehat{\theta}\begin{bmatrix} 0 \\ X \end{bmatrix}] = \widehat{\alpha}'E_{N}[X]$$
+                                where we have decomposed $\widehat{\theta}$ as $\widehat{\theta}:=[\widehat{\beta}',\widehat{\alpha}']'.$
+                            </p>
+                            </p>
+                            <p></p>
+                            
+                        </div>
+                    </div>
+                </div>
+                <!--End -->
+                <!-- 3Start -->
+                <div class="container bg-white py-5">
+                    <div class="row px-3">
+                        <div class="col-12">
+                            <h2 class="title position-relative pb-2 mb-4">The impact of data on estimation</h2>
+                        </div>
+                        <div class="col-12">
+                            <p>By the linear regression for estimation, we get $$\widehat{\theta}:=E_{N}[\begin{bmatrix} X \\ XA \end{bmatrix}\begin{bmatrix} X \\ XA \end{bmatrix}']^{-1}E_{N}[Y\begin{bmatrix} X \\ XA \end{bmatrix}].$$
+                            and $$E[Y(1)-Y(0)]\approx \widehat{\alpha}'E_{N}[X]$$
+                            where we have decomposed $\widehat{\theta}$ as $\widehat{\theta}:=[\widehat{\beta}',\widehat{\alpha}']'.$<br/>
+                            The data objects we need to consider are housing price change $A$, policy support $P$ and Household income $I$.  
+                            This is a simple algorithm, we should choose the right number of samples, not too few data sets, to ensure that our results are reasonable.
+                            
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!--End -->
+               <!-- 4Start -->
+                <div class="container bg-white py-5">
+                    <div class="row px-3">
+                        <div class="col-12">
+                            <h2 class="title position-relative pb-2 mb-4">Views on the results and performance of the algorithm</h2>
+                        </div>
+                        <div class="col-12">  
+                            <p>The ATE $E[Y(1)-Y(0)]$ in terms of $\widehat{\theta}$ is  $$E[Y(1)-Y(0)]\approx \widehat{\alpha}'E_{N}[X].$$
+                            We use the method of outcome regression to construct a linear regression model for the data, 
+                            assuming that there is a linear relationship between the data and the outcome data.<br/>
+                            We set the function $\mu (X,A;\theta)$  is equal to $\theta' \begin{bmatrix} X \\ XA \end{bmatrix}$.
+                            Of course, we can set up other ones, such as $\mu (X,A;\theta):=\theta' \begin{bmatrix} X \\ A \end{bmatrix}$.<br/>
+                            In linear regression, we could easily see the relation between the average treatment effect and the estimated parameters.
+                            When the data samples are very large, it may take up more time for calculation and estimation of $\theta$.
+                            </p>
+                            
+                        </div>
+                    </div>
+                </div>
+                <!--End -->
+                
+                <!-- 5Start -->
+                <div class="container bg-white py-5">
+                    <div class="row px-3">
+                        <div class="col-12">
+                            <h2 class="title position-relative pb-2 mb-4">Review the definition:</h2>
+                        </div>
+                        <div class="col-12">
+                            <p>In this research project, the object of my study is the fertility rate and the change of house price. <br/>
+                                The average rate of change of selling price is the birth rate data as the reference, which can be observed and collected.</p>
+                            <p>Definition: <br/>
+                                Binary variable fertility change $Y\in\left\{-1,1\right\}$,1 means fertility increase, -1 means fertility decrease.<br/>
+                                Binary variable housing price change $A\in\left\{-1,1\right\}$,1 means housing price increase, -1 means housing price decrease. <br/>
+                                Policy support $P\in\left\{0,1\right\}$, 0 means no policy support, 1 means policy support. <br/>
+                                Family characteristics $X\in R^{d}$. <br/> 
+                                Family income $I\in\left\{0,1\right\}$ represents high and low income respectively.<br/> 
+                                Supply-demand relation $U$. </p>
+                            
+                        </div>
+                    </div>
+                </div>
+                <!--End -->
+                
+                <!-- 6Start -->
+                <div class="container bg-white py-5">
+                    <div class="row px-3">
+                        <div class="col-12">
+                            <h2 class="title position-relative pb-2 mb-4">Review DAG:</h2>
+                        </div>
+                        <div class="col-12">
+                            <p>I describe the relations between variabls by DAG.</p>
+                            <img class="img-fluid w-100" src="images/DAG3.jpg">
+                            <a href="https://ruochongj.github.io/Research.html">Go to Research Page<br/></a>
+                            <a href="https://ruochongj.github.io/Identification.html">Go to Identification Page</a>
+                            <a href="https://ruochongj.github.io/Estimation.html">Go to Estimation Page</a>
+                            <p align="right">
+                            <a href="https://ruochongj.github.io/index.html">Return to Home Page</a>
+                                </p>
+                        </div>
+                    </div>
+                </div>
+                <!--End -->
+                
+            </div>
+        </div>
+        
+        <!-- Back to Top -->
+        <a href="#" class="back-to-top"><i class="fa fa-angle-double-up"></i></a>
+        
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="lib1/typed/typed.min.js"></script>
+        <script src="lib1/easing/easing.min.js"></script>
+        <script src="lib1/waypoints/waypoints.min.js"></script>
+        <script src="lib1/owlcarousel/owl.carousel.min.js"></script>
+        <script src="lib1/isotope/isotope.pkgd.min.js"></script>
+        <script src="lib1/lightbox/js/lightbox.min.js"></script>
+
+        <!-- Contact Javascript File -->
+        <script src="mail/jqBootstrapValidation.min.js"></script>
+        <script src="mail/contact.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="js1/main.js"></script>
+    </body>
+</html>
