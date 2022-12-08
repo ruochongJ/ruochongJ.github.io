@@ -50,6 +50,8 @@
                         </div>
                         <div class="col-12">
                             <p>We keep our assumptions for our estimation.
+                                </p>
+                            <p
                                We assume consistency, positivity, exchangeability, and stable-unit treatment value assumption.</p>
                             <p>1.<b>Consistency:</b><br/>
                                 Potential outcomes $Y(a)=Y$, where we to assign $a$ to $A$. That is, the observed values equal the corresponding potential outcomes.    </p>
@@ -80,7 +82,8 @@
                             <p>Our estimation depends on conditional exchangeability/ backdoor adjustment assumption: $A\bot Y(a)|X$.</p>
                             <p>When A is not randomized, the assumption is doubtful. Let's introduce an unmeasured variable U which is associated with $A$ and $Y$.</p>
                             <p>We now assume that $Y(a)\bot A|X,U$ rather than $A\bot Y(a)|X$, 
-                                and we need the positivity assumption that is $0<P(A=1|X=x,U=u)<1 $, for all $x,u$.</p>
+                                and we need the positivity assumption that is $P(A=1|X=x,U=u)\in (0,1)$, for all $x,u$.
+                            </p>
                             <p>The conditional ATE is $E[Y(1)-Y(0)|X]$, and we can rewrite it as the sum of four terms: 
                                 $$E[Y(1)-Y(0)|X]$$
                                 $$=E[Y(1)|X,A=1]P(A=1|X)+E[Y(1)|X=x,A=0]P(A=0|X=x)$$
@@ -103,7 +106,9 @@
                             <p>
                                
                                 That is, $$C-P(A=1|x)\leq E[Y(1)-Y(0)|X]\leq C+(1-P(A=1|X))$$
-                                where $C:=E[Y|X,A=1]P(A=1|X)-E[Y|X,A=0](1-P(A=1|X=x))\in [-1,1]$<br/>
+                                where $C:=E[Y|X,A=1]P(A=1|X)-E[Y|X,A=0](1-P(A=1|X=x))\in [-1,1]$.
+                                </p>
+                            <p
                                 So we complete the proof of the Manski bound by the above statement.
                                 </p>
                              <p>
