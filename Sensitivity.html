@@ -49,6 +49,18 @@
                             <h2 class="title position-relative pb-2 mb-4">Assumptions for sensitivity analysis</h2>
                         </div>
                         <div class="col-12">
+                            <p>We assume consistency, positivity, exchangeability, and stable-unit treatment value assumption.</p>
+                            <p>1.<b>Consistency:</b><br/>
+                                Potential outcomes $Y(a)=Y$, where we to assign $a$ to $A$. That is, the observed values equal the corresponding potential outcomes.    </p>
+                            <p>2.<b>Positivity:</b><br/>
+                                $P(Y)>0$, $Y$ is the potential outcome.
+                                We can assume positivity because the probability of each event in real life have to be positive. </p>
+                            <p>3.<b>Exchangeability:</b><br/> 
+                                Potential outcomes $Y\left( a\right)$ are independent from the treatment assignment $A$ for each $a\in A$ i.e. $Y\left( a\right) \bot a,a\in A$.<br/>
+                                Because the actual birth of a family does not provide any information about what will happen to the family under various house price changes.
+                                        </p>
+                            <p>4.<b>SUTVA:</b><br/>
+                                The mapping $a\rightarrow Y\left( a\right)$ is a well-defined function from $A$ to the set of random variables. </p>
                             <p></p>
                             <p></p>
                             <p></p>
@@ -60,12 +72,12 @@
                 <div class="container bg-white py-5">
                     <div class="row px-3">
                         <div class="col-12">
-                            <h2 class="title position-relative pb-2 mb-4">Alternatives are available to investigate sensitivity of conclusions/inferences to  assumptions</h2>
+                            <h2 class="title position-relative pb-2 mb-4">Steps for sensitivity</h2>
                         </div>
                         <div class="col-12">
-                            <p></p>
-                            <p></p>
-                            <p></p>
+                            <p>In this part, we use the Manski approach for the sensitivity analysis.</p>
+                            <p>Our estimation depends on conditional exchangeability/ backdoor adjustment assumption: $A\bot Y(a)|X$.</p>
+                            <p>When A is not randomized, the assumption is doubtful. Let's introduce an unmeasured va</p>
                         </div>
                     </div>
                 </div>
