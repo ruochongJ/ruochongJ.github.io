@@ -86,15 +86,19 @@
                                 $$-E[Y(0)|X=x,A=1]P(A=1|X=x)-E[Y(0)|X=x,A=0]P(A=0|X=x)$$ 
                             (Use consistency and the propensity score to simplify the expression:)
                                 $$=E[Y|X,A=1]P(A=1|X)+E[Y(1)|X=x,A=0](1-P(A=0|X=x))$$
-                                $$-E[Y(0)|X=x,A=1]P(A=1|X=x)-E[Y|X=x,A=0](1-P(A=0|X=x))$$
-                                For binary $Y\in {0,1}$, we have that $E[Y(1)|X=x,A=0]$ and $E[Y(0)|X=x,A=1]$ will take values in $[0,1]$.
+                                $$-E[Y(0)|X=x,A=1]P(A=1|X=x)-E[Y|X=x,A=0](1-P(A=0|X=x))$$</p>
+                            <p>
+                                For binary $Y\in {0,1}$, we have that $E[Y(1)|X=x,A=0]$ and $E[Y(0)|X=x,A=1]$ will take values in $[0,1]$.<br/>
                                 Besides, we know that $1-P(A=1|X=x)\geq 0$ and $P(A=o|X=x)\geq 0$, 
                                 therefore the biggest conditional ATE can be reached by letting $E[Y(1)|X=x,A=0]$ be the biggest (1)
-                                and $E[Y(0)|X=x,A=1]$ be the smallest (0). 
+                                and $E[Y(0)|X=x,A=1]$ be the smallest (0). <br/>
+
                                 Similarly, the smallest conditional ATE can be created by letting $E[Y(1)|X=x,A=0]$ be the smallest (0) 
                                 and  $E[Y(0)|X=x,A=1]$ be the biggest (1).
                                 That is, $$C-P(A=1|x)\leq E[Y(1)-Y(0)|X]\leq C+(1-P(A=1|X))$$
-                                where $C:=E[Y|X,A=1]P(A=1|X)-E[Y|X,A=0](1-P(A=1|X=x))\in [-1,1]$
+                                where $C:=E[Y|X,A=1]P(A=1|X)-E[Y|X,A=0](1-P(A=1|X=x))\in [-1,1]$<br/>
+                                So we complete the proof of the Manski bound by the above statement.
+                                
                             </p>
                         </div>
                     </div>
