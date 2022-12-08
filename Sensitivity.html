@@ -46,10 +46,11 @@
                 <div class="container bg-white py-5">
                     <div class="row px-3">
                         <div class="col-12">
-                            <h2 class="title position-relative pb-2 mb-4">Assumptions for sensitivity analysis</h2>
+                            <h2 class="title position-relative pb-2 mb-4">Assumptions</h2>
                         </div>
                         <div class="col-12">
-                            <p>We assume consistency, positivity, exchangeability, and stable-unit treatment value assumption.</p>
+                            <p>We keep our assumptions for our estimation.
+                               We assume consistency, positivity, exchangeability, and stable-unit treatment value assumption.</p>
                             <p>1.<b>Consistency:</b><br/>
                                 Potential outcomes $Y(a)=Y$, where we to assign $a$ to $A$. That is, the observed values equal the corresponding potential outcomes.    </p>
                             <p>2.<b>Positivity:</b><br/>
@@ -77,7 +78,15 @@
                         <div class="col-12">
                             <p>In this part, we use the Manski approach for the sensitivity analysis.</p>
                             <p>Our estimation depends on conditional exchangeability/ backdoor adjustment assumption: $A\bot Y(a)|X$.</p>
-                            <p>When A is not randomized, the assumption is doubtful. Let's introduce an unmeasured va</p>
+                            <p>When A is not randomized, the assumption is doubtful. Let's introduce an unmeasured variable U which is associated with $A$ and $Y$.</p>
+                            <p>We now assume that $Y(a)\bot A|X,U$ rather than $A\bot Y(a)|X$, 
+                                and we need the positivity assumption that is $0<P(A=1|X=x,U=u)<1$, for all $x,u$</p>
+                            <p>The conditional ATE is $E[Y(1)-Y(0)|X]$, and we can rewrite it as the sum of four terms: 
+                                $$E[Y(1)-Y(0)|X]=E[Y(1)|X,A=1]P(A=1|X)+E[Y(1)|X=x,A=0]P(A=0|X=x)-E[Y(0)|X=x,A=1]P(A=1|X=x)-E[Y(0)|X=x,A=0]P(A=0|X=x)$$ 
+                            (Use consistency and the propensity score to simplify the expression:)
+                                $$=E[Y|X,A=1]P(A=1|X)+E[Y(1)|X=x,A=0](1-P(A=0|X=x))-E[Y(0)|X=x,A=1]P(A=1|X=x)-E[Y|X=x,A=0](1-P(A=0|X=x))$$
+                                However, we can not identify the second and third term.
+                            </p>
                         </div>
                     </div>
                 </div>
