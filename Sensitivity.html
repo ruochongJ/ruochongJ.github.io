@@ -121,22 +121,22 @@
                             <h2 class="title position-relative pb-2 mb-4">Alternatives to sensitivity</h2>
                         </div>
                         <div class="col-12">
-                            <p>In the estimation part, we use the outcome regression, and bulid a linear regression model for estiamtion.
+                            <p>In the estimation part, we use the <b>outcome linear regression</b>, and bulid a linear regression model for estiamtion.
                                 $$E[Y|X,A]:=\mu(X,A;\theta).$$
-                            Especially, we choose the form of $\mu (X,A;\theta)$ including interaction term:
+                            Especially, we choose the form of $\mu (X,A;\theta)$ including <b>interaction term</b>:
                                 $$\mu (X,A;\theta ):=\theta' \begin{bmatrix} X \\ XA \end{bmatrix}.$$
                             </p>
                             <p> Based on outcome regression, we estimate the ATE with 
                               $$E[Y(1)-Y(0)]\approx E_{N}[\widehat{\theta}\begin{bmatrix} X \\ X \end{bmatrix}-\widehat{\theta}\begin{bmatrix} X \\ 0 \end{bmatrix}]$$
-                              $$=E_{N}[\widehat{\theta}\begin{bmatrix} 0 \\ X \end{bmatrix}] = \widehat{\alpha}'E_{N}[X]$$
+                              $$=E_{N}[\widehat{\theta}\begin{bmatrix} 0 \\ X \end{bmatrix}] = \widehat{\alpha}'E_{N}[X],$$
                               where we have decomposed $\widehat{\theta}$ as $\widehat{\theta}:=[\widehat{\beta}',\widehat{\alpha}']'.$
                             </p>
-                            <p>We can also use the logistic regression: by using a link function $g$ such that 
+                            <p>We can also use the <b>logistic regression</b>: by using a link function $g$ such that 
                                 $$g(E[y|X,A]):=g(\mu (Y,X;\theta)):=\eta (X,A;\beta).$$ </p>
-                            <p>For binary Y,logit function is a common choice for $g$, $logit(Y):=\frac{log(y)}{log(1-y)}$                         
+                            <p>For binary Y, logit function is a common choice for $g$, $logit(Y):=\frac{log(y)}{log(1-y)}$<br/>                         
                                 With a logit function as a link, logistic regression then model $\eta(X,A;\theta)$ as a linear function of $\theta$ 
                                 and recover $$\hat {\theta}:=max_{\theta}E_{N}[log{\mu (X,A;\theta)^{Y}(1-\mu (X,A;\theta))^{1-Y}}].$$
-                                We might take $$\eta(X,A;\theta):=\theta'\begin{bmatrix} x \\ A \end{bmatrix}$$
+                                We might take $$\eta(X,A;\theta):=\theta'\begin{bmatrix} x \\ A \end{bmatrix}.$$
                                 Once we have $\hat{\theta}$, we can estimate the ATE $$E[Y(1)-Y(0)]\approx E_{N}[\mu (X,1;\theta)-\mu (X,0;\theta)].$$
                             </p>
                         </div>
