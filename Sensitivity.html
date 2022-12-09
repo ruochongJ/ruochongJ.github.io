@@ -51,8 +51,7 @@
                         <div class="col-12">
                             <p>We keep our assumptions for our estimation.
                                 </p>
-                            <p
-                               We assume consistency, positivity, exchangeability, and stable-unit treatment value assumption.</p>
+                            <p>We assume consistency, positivity, exchangeability, and stable-unit treatment value assumption.</p>
                             <p>1.<b>Consistency:</b><br/>
                                 Potential outcomes $Y(a)=Y$, where we to assign $a$ to $A$. That is, the observed values equal the corresponding potential outcomes.    </p>
                             <p>2.<b>Positivity:</b><br/>
@@ -81,10 +80,10 @@
                             <p>In this part, we use the Manski approach for the sensitivity analysis.</p>
                             <p>Our estimation depends on conditional exchangeability/ backdoor adjustment assumption: $A\bot Y(a)|X$.</p>
                             <p>When A is not randomized, the assumption is doubtful. Let's introduce an unmeasured variable U which is associated with $A$ and $Y$.</p>
-                            <p>We now assume that $$Y(a)\bot A|X,U$ rather than $A\bot Y(a)|X$$, 
-                                and we need the positivity assumption that is $P(A=1|X=x,U=u)\in (0,1)$, for all $x,u$.
+                            <p>We now assume that $Y(a)\bot A|X,U$ rather than $A\bot Y(a)|X$, 
+                                and we need the positivity assumption that is $$P(A=1|X=x,U=u)\in (0,1),$$ for all $x,u$.
                             </p>
-                            <p>The conditional ATE is $E[Y(1)-Y(0)|X]$, and we can rewrite it as the sum of four terms: 
+                            <p>The conditional ATE is $$E[Y(1)-Y(0)|X]$$, and we can rewrite it as the sum of four terms: 
                                 $$E[Y(1)-Y(0)|X]$$
                                 $$=E[Y(1)|X,A=1]P(A=1|X)+E[Y(1)|X=x,A=0]P(A=0|X=x)$$
                                 $$-E[Y(0)|X=x,A=1]P(A=1|X=x)-E[Y(0)|X=x,A=0]P(A=0|X=x)$$ 
@@ -95,9 +94,9 @@
                                 For binary $Y\in {0,1}$, we have that $$E[Y(1)|X=x,A=0]$$ and $$E[Y(0)|X=x,A=1]$$ will take values in $[0,1]$.
                                 </p>
                             <p>
-                                Besides, we know that $$1-P(A=1|X=x)\geq 0$$ and $$P(A=o|X=x)\geq 0$$, 
-                                therefore the biggest conditional ATE can be reached by letting $E[Y(1)|X=x,A=0]$ be the biggest (1)
-                                and $E[Y(0)|X=x,A=1]$ be the smallest (0). 
+                                Besides, we know that $$1-P(A=1|X=x)\geq 0$$ and $$P(A=o|X=x)\geq 0,$$ 
+                                therefore the biggest conditional ATE can be reached by letting $$E[Y(1)|X=x,A=0]$$ be the biggest (1)
+                                and $$E[Y(0)|X=x,A=1]$$ be the smallest (0). 
                             </p>
                             <p>
                                 Similarly, the smallest conditional ATE can be created by letting $$E[Y(1)|X=x,A=0]$$ be the smallest (0) 
@@ -132,8 +131,14 @@
                               $$=E_{N}[\widehat{\theta}\begin{bmatrix} 0 \\ X \end{bmatrix}] = \widehat{\alpha}'E_{N}[X]$$
                               where we have decomposed $\widehat{\theta}$ as $\widehat{\theta}:=[\widehat{\beta}',\widehat{\alpha}']'.$
                             </p>
-                            <p></p>
-                            <p></p>
+                            <p>We can also use the logistic regression: by using a link function $g$ such that 
+                                $$g(E[y|X,A]):=g(\mu (Y,X;\theta)):=\eta (X,A;\beta).$$ </p>
+                            <p>For binary Y,logit function is a common choice for $g$, $logit(Y):=\frac{log(y)}{log(1-y)}$                         
+                                With a logit function as a link, logistic regression then model $\eta(X,A;\theta)$ as a linear function of $\theta$ 
+                                and recover $$\hat {\theta}:=max_{\theta}E_{N}[log{\mu (X,A;\theta)^{Y}(1-\mu (X,A;\theta))^{1-Y}}].$$
+                                We might take $$\eta(X,A;\theta):=\theta'\begin{bmatrix} x \\ A \end{bmatrix}$$
+                                Once we have $\hat{\theta}$, we can estimate the ATE $$E[Y(1)-Y(0)]\approx E_{N}[\mu (X,1;\theta)-\mu (X,0;\theta)].$$
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -145,7 +150,7 @@
                             <h2 class="title position-relative pb-2 mb-4">Assumptions that cannot be investigated</h2>
                         </div>
                         <div class="col-12">  
-                            <p></p>
+                            <p>We keep our assumptions for estimation in the outcome regression, and there is no other assumption for Manski bound.</p>
                             <p></p>
                             <p></p>
                         </div>
